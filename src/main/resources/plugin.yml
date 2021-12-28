@@ -1,0 +1,8 @@
+name: CryptoCraft
+version: '${project.version}'
+main: cryptocraft.cryptocraft.CryptoCraft
+api-version: 1.18
+commands:
+  cd:
+    usage: "/cd"
+    description: "Open menu."
