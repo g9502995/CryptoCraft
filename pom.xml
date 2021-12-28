@@ -6,7 +6,7 @@
 
     <groupId>CryptoCraft</groupId>
     <artifactId>CryptoCraft</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>CryptoCraft</name>
@@ -39,6 +39,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <outputFile>D:\server\1.18.1\plugins\CryptoCraft.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -67,6 +68,9 @@
             <url>https://repo.essentialsx.net/releases/</url>
         </repository>
 
+
+
+
     </repositories>
 
 
@@ -86,6 +90,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.0</version>
+        </dependency>
 
 
     </dependencies>

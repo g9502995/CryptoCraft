@@ -93,7 +93,7 @@ public class menu {
 
 
         components.close();
-        opop = Bukkit.createInventory(player, 27, TITLE);
+        opop = Bukkit.createInventory(player, 27, "BTC購物選單");
         owner = player;
 
         ItemStack profiles = new ItemStack(Material.GOLD_INGOT, 1, (short) 3);
