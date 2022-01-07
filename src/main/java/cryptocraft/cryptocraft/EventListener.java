@@ -35,7 +35,7 @@ public class EventListener implements Listener{
 
         Player player = (Player) e.getWhoClicked();
         InventoryView inv = player.getOpenInventory();
-        if (inv.getTitle().equals(menu.TITLE)||inv.getTitle().equals(TITLE)) {
+        if (inv.getTitle().equals(menu.TITLE)||inv.getTitle().equals(TITLE)||inv.getTitle().equals(menu.BTCBUY)) {
             e.setCancelled(true);
             if (e.getRawSlot() < 0 || e.getRawSlot() > e.getInventory().getSize()) {
                 return;
@@ -74,40 +74,24 @@ public class EventListener implements Listener{
               menu.menuBTC(player);
 
 
-
             }if (clickedItem.getItemMeta().getDisplayName().equals(menu.BUY)) {
-                try {
-                    Economy.setMoney(player.getName(),100000);
-                } catch (UserDoesNotExistException ex) {
-                    ex.printStackTrace();
-                } catch (NoLoanPermittedException ex) {
-                    ex.printStackTrace();
-                } catch (MaxMoneyException ex) {
-                    ex.printStackTrace();
-                }
-                try {
-                    if(Economy.getMoney(player.getName())>binance.BTCUSDT()){
-                        try {
-                            Economy.setMoney(player.getName(),-binance.BTCUSDT());
-                        } catch (NoLoanPermittedException ex) {
-                            ex.printStackTrace();
-                        } catch (MaxMoneyException ex) {
-                            ex.printStackTrace();
-                        }
-                        configread.addBTC(player.getName(),1);
-                    }else {
-                        player.sendMessage("你不夠錢");
-                    }
-                } catch (UserDoesNotExistException ex) {
-                    ex.printStackTrace();
-                }
 
+             menu.menuBTCBuy(player);
+
+
+            }if (clickedItem.getItemMeta().getDisplayName().equals(menu.SELL)) {
+                menu.sellBTCBuy(player);
             }
+
+
+
 
 
 
 
         }
     }
+
+
 
 }

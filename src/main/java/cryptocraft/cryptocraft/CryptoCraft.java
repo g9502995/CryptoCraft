@@ -34,31 +34,7 @@ public final class CryptoCraft extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        DiscordWebhook webhook = new DiscordWebhook(WebhookURL);
 
-        webhook.setContent("中文");
-        webhook.setAvatarUrl("https://your.awesome/image.png");
-        webhook.setUsername("Minecraft BOT");
-        webhook.setTts(true);
-        webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                .setTitle("Title")
-                .setDescription("This is a description")
-                .setColor(Color.RED)
-                .addField("1st Field", "Inline", true)
-                .addField("2nd Field", "Inline", true)
-                .addField("3rd Field", "No-Inline", false)
-                .setThumbnail("https://kryptongta.com/images/kryptonlogo.png")
-                .setFooter("Footer text", "https://kryptongta.com/images/kryptonlogodark.png")
-                .setImage("https://kryptongta.com/images/kryptontitle2.png")
-                .setAuthor("Author Name", "https://kryptongta.com", "https://kryptongta.com/images/kryptonlogowide.png")
-                .setUrl("https://kryptongta.com"));
-        webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                .setDescription("Just another added embed object!"));
-        try {
-            webhook.execute(); //Handle exception
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         // Plugin startup logic
         try {
             URL url = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
