@@ -44,6 +44,7 @@ public class menu {
     public static final String btc = ChatColor.GREEN + "BTC";
     public static final String BUY = "購買BTC";
     public static final String SELL = "販賣BTC";
+    public static final String History = "交易歷史";
 
 
 
@@ -160,12 +161,13 @@ public class menu {
     }
 
     public static void menuBTCBuy(Player player) {
-
+        int o = binance.BTCUSDT();
         try {
             if(Economy.getMoney(player.getName())>binance.BTCUSDT()){
                 player.sendMessage(player.getName()+"請輸入你需要購買幾個數量");
                 try {
-                    int a= Integer.valueOf((int) Economy.getMoney(player.getName())) - binance.BTCUSDT();
+
+                    int a= Integer.valueOf((int) Economy.getMoney(player.getName())) - o;
                     int g = Integer.valueOf((int) Economy.getMoney(player.getName()));
                     player.sendMessage("你好"+a+"不好"+g);
                     Economy.setMoney(player.getName(),a);
@@ -175,7 +177,7 @@ public class menu {
                 } catch (MaxMoneyException ex) {
                     ex.printStackTrace();
                 }
-                configread.addBTC(player.getName(),1);
+                configread.addBTC(player.getName(),1,o,player);
             }else {
                 player.sendMessage("你不夠錢");
             }
@@ -187,7 +189,7 @@ public class menu {
 
     public static void sellBTCBuy(Player player) {
 
-
+int g = binance.BTCUSDT();
 
             if (configread.LoadBTC(player.getName()) <= 0) {
                 player.sendMessage("你目前沒有BTC");
@@ -195,9 +197,9 @@ public class menu {
             }else {
 
                 try {
-                    int a = Integer.valueOf((int) Economy.getMoney(player.getName())) + binance.BTCUSDT();
+                    int a = Integer.valueOf((int) Economy.getMoney(player.getName())) + g;
                     Economy.setMoney(player.getName(),a);
-                    configread.sellBTC(player.getName(),1);
+                    configread.sellBTC(player.getName(),1,g);
                     player.sendMessage("販賣完成");
                     player.closeInventory();
                 } catch (UserDoesNotExistException e) {
